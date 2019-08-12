@@ -40,10 +40,22 @@ function myFunction() {
                                 c[0].innerHTML = "Name  min 2 & max 32 char";
                                 error++;
                             }
+                            else if(x[0].value.charCodeAt(i) <= 65 || x[0].value.charCodeAt(i) >= 90
+                            && x[0].value.charCodeAt(i) <=97 || x[0].value.charCodeAt(i)>=122 ||
+                            x[1].value.charCodeAt(i) <= 65 || x[1].value.charCodeAt(i) >= 90
+                            && x[1].value.charCodeAt(i) <=97 || x[1].value.charCodeAt(i)>=122
+                            )
+                            {
+                                x[z].style.border = "2px solid maroon";
+                                c[0].innerHTML = "Name should be characters";
+                                error++;
+                            }
                             else{
                         c[0].innerHTML = "";
                         x[z].style.border = "2px solid lightgreen";
                             }
+
+        
                     
                     break;
 
