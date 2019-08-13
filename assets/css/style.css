@@ -91,10 +91,16 @@ input[type="date"] {
   outline: none;
 }
 
-span{
-  display: block;
-  color: #a94442;
-  font-size: 14px;
+.error{
+    color: #a94442;
+    font-size: 14px;
+    display: block;
+    width: 234px;
+    height: 20px;
+    background-color: antiquewhite;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 7px;
  
 }
 

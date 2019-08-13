@@ -7,6 +7,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="assets/jquery/jquery.js"></script>
 </head>
 
 <body>
@@ -26,83 +28,63 @@
         <hr>
 
         <!-- Form-->
-        <form name="myForm" id="form1" onsubmit="event.preventDefault(); return myFunction()">
+        <form name="myForm" id="form1" onsubmit="event.preventDefault(); return validation()">
 
-
-          <label>Employee Code #</label>
+          <label>Employee Code #</label>                                                
           <button class="btn field-small">32504122</button>
 
           <label>Name</label>
-          <input id="xv" class="field-small" type="text" name="fname" placeholder="first name">
-
-          <input class="field-small" type="text" name="lname" placeholder="last name">
-          <span class="error"> </span>
-
-
+          <input id="fname" onchange="validateName('#fname','First name')"   class="field-small" type="text" name="fname" placeholder="first name">
+          <input id="lname" onchange="validateName('#lname','Last name')" class="field-small" type="text" name="lname" placeholder="last name">
+          
           <label>Phone Number</label>
-          <input class="field-big" type="text" name="pnumber" placeholder="phone number">
-          <span class="error"> </span>
-
-
+          <input id="phone"  onchange="validatePhone('#phone','Phone')" class="field-big" type="text" name="phone" placeholder="phone number">
 
           <label>Email</label>
-          <input class="field-big" type="email" name="email" placeholder="ashish@gmail.com">
-          <span class="error"> </span>
-
-
+          <input id="email" onchange="validateEmail('#email','Email')" class="field-big" type="text" name="email" placeholder="ashish@gmail.com">
+    
           <label>D.O.B</label>
-          <input type="date" name="dob">
-          <span class="error"> </span>
-
-
+          <input onchange="validateDob('#dob','D.O.B')" id="dob" type="date" name="dob">
+          
           <label>Current Address</label>
-          <input class="field-big" type="text" name="faddr" placeholder="street address">
-          <span class="error"> </span>
-
-          <input class="field-big" type="text" name="saddr" placeholder="street address line 2">
-          <span class="error"> </span>
-
+          <input id="address1" onchange="validateName('#address1','Address')" class="field-big" type="text" name="faddr" placeholder="street address">
+    
+          <input id="address2" class="field-big" type="text" name="saddr" placeholder="street address line 2">
+          
           <!-- Col row-->
           <div class="row">
 
             <div class="col-6">
               <label>City</label>
-              <input type="text" name="city" placeholder="city">
-              <span class="error"> </span>
-
+              <input onchange="validateCity('#city','City')" id="city" type="text" name="city" placeholder="city">
             </div>
 
             <div class="col-6">
               <label>Postal</label>
-              <input type="text" name="fname" placeholder="Postal code">
-              <span class="error"> </span>
-
+              <input onchange="validatePostal('#postal','Postal')" id="postal" type="text" name="postal" placeholder="Postal code">
             </div>
 
             <div class="col-6">
               <label class="address-field">Country</label>
-              <input type="text" name="country" value="India" disabled>
+              <input id="country" type="text" name="country" value="India" disabled>
             </div>
-
 
             <div class="col-6">
               <label>State</label>
-              <select name="state" id="select1">
-                <option value="select">Select state</option>
+              <select name="state" id="state" onchange="validateState('#state','State')">
+                <option value="">Select state</option>
                 <option value="Rajasthan">Rajasthan</option>
                 <option value="Delhi">Delhi</option>
                 <option value="Hariyana">Hariyana</option>
                 <option value="UP">UP</option>
               </select>
-              <span id="error"> </span>
+             
             </div>
-
 
           </div>
            <!-- //col row-->
 
           <input type="submit" value="submit">
-
 
         </form>
         <!-- //Form -->

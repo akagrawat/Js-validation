@@ -1,4 +1,4 @@
-function myFunction() {
+function validation() {
 
     var x = document.getElementsByTagName("input"); // Array of input field  
     var c = document.getElementsByClassName("error"); // Array of error field
@@ -174,4 +174,6 @@ function myFunction() {
     window.alert("Employee Info submit successfully" );
         return true;
 }
+
+
 
