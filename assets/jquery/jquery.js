@@ -14,7 +14,7 @@ function checkEmpty(id, type) {
 function validateName(id, type) {
     $(id).next().remove(".error");
     let flag = false;
-    if (checkEmpty(id, type)) {
+    if (checkEmpty(id, type)) { // Ternary operator
         ($(id).val().length < 2 || !isNaN($(id).val())) ? ($(id).css("border", "2px  solid maroon")
             .after("<span class='error'>**" + type + " " + "min 2 & max 32 char**</p>"), flag = false) : ($(id)
                 .css("border", "2px  solid green"), flag = true);
@@ -46,57 +46,10 @@ function validatePhone(id, type) {
             flag = false;
         }
 
-    } 
+    }
     return flag;
 }
 
-/* Check city validation */
-function validateCity(id, type) {
-    $(id).next().remove(".error");
-    let flag = false;
-    if (checkEmpty(id, type)) {
-        ($(id).val().length > 32 || !isNaN($(id).val())) ?
-            ($(id).css("border", "2px  solid maroon").after("<span class='error'>**" + type + " " + "should be a valid name"), flag = false)
-            : ($(id).after("").css("border", "2px  solid green"), flag = true);
-
-    } return flag;
-}
-/* Check state validation */
-function validateState(id, type) {
-    $(id).next().remove(".error");
-    let flag = false;
-    if ($(id).find(":selected").val() == "") {
-        $(id).css("border", "2px  solid maroon")
-            .after("<span class='error'>**" + type + " " + "should not be empty**</p>");
-        flag = false;
-    } else {
-        $(id).css("border", "2px  solid green");
-        flag = true;
-    } return flag;
-}
-/* Check postal validation */
-function validatePostal(id, type) {
-
-    $(id).next().remove(".error");
-    let flag = false;
-    if (checkEmpty(id, type)) {
-        ($(id).val().length < 5 || $(id).val().length > 10) ?
-            ($(id).css("border", "2px  solid maroon").after("<span class='error'>**" + type + " " + "must be valid formate & min 5 char"), flag = false)
-            : ($(id).after("").css("border", "2px  solid green"), flag = true);
-
-    } return flag;
-}
-/* Check DOB validation */
-
-function validateDob(id, type) {
-    $(id).next().remove(".error");
-    let flag = false;
-    if (checkEmpty(id, type)) {
-        $(id).css("border", "2px  solid green");
-        flag = true;
-    } return flag;
-
-}
 /* Check Email validation */
 
 function validateEmail(id, type) {
@@ -109,6 +62,57 @@ function validateEmail(id, type) {
         (!regexValue) ? ($(id).css("border", "2px  solid maroon")
             .after("<span class='error'>**" + type + " " + "must be valid formate"), flag = false)
             : ($(id).after("").css("border", "2px  solid green"), flag = true);
+    } return flag;
+}
+
+/* Check DOB validation */
+
+function validateDob(id, type) {
+    $(id).next().remove(".error");
+    let flag = false;
+    if (checkEmpty(id, type)) {
+        $(id).css("border", "2px  solid green");
+        flag = true;
+    } return flag;
+
+}
+
+/* Check city validation */
+function validateCity(id, type) {
+    $(id).next().remove(".error");
+    let flag = false;
+    if (checkEmpty(id, type)) {
+        (!isNaN($(id).val())) ?
+            ($(id).css("border", "2px  solid maroon").after("<span class='error'>**" + type + " " + "should be a valid name"), flag = false)
+            : ($(id).after("").css("border", "2px  solid green"), flag = true);
+
+    } return flag;
+}
+
+/* Check postal validation */
+function validatePostal(id, type) {
+
+    $(id).next().remove(".error");
+    let flag = false;
+    if (checkEmpty(id, type)) {
+        ($(id).val().length < 5 || $(id).val().length > 10) ?
+            ($(id).css("border", "2px  solid maroon").after("<span class='error'>**" + type + " " + "must be valid formate & min 5 char"), flag = false)
+            : ($(id).after("").css("border", "2px  solid green"), flag = true);
+
+    } return flag;
+}
+
+/* Check state validation */
+function validateState(id, type) {
+    $(id).next().remove(".error");
+    let flag = false;
+    if ($(id).find(":selected").val() == "") {
+        $(id).css("border", "2px  solid maroon")
+            .after("<span class='error'>**" + type + " " + "should not be empty**</p>");
+        flag = false;
+    } else {
+        $(id).css("border", "2px  solid green");
+        flag = true;
     } return flag;
 }
 
