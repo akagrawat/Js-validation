@@ -21,26 +21,43 @@ function validateName(id, type) {
 
     } return flag;
 }
+
 /* Check phone validation */
 function validatePhone(id, type) {
     $(id).next().remove(".error");
     let flag = false;
     if (checkEmpty(id, type)) {
-        ($(id).val().length == 10 || isNaN($(id).val())) ? ($(id).after("")
-        .css("border", "2px  solid green"), flag = true):  ($(id).css("border", "2px  solid maroon")
-                .after("<span class='error'>**" + type + " " + " no. must be 10 digits"), flag = false);
+        if ($(id).val().length == 10) {
+            // check integer value
+            if (isNaN($(id).val()) == false) {
+                $(id).after("").css("border", "2px  solid green");
+                flag = true;
+            }
+            else {
+                $(id).css("border", "2px  solid maroon")
+                    .after("<span class='error'>**" + type + " " + " no. must be 10 digits");
+                flag = false;
+            }
 
-    } return flag;
+        }
+        else {
+            $(id).css("border", "2px  solid maroon")
+                .after("<span class='error'>**" + type + " " + " no. must be 10 digits");
+            flag = false;
+        }
+
+    } 
+    return flag;
 }
 
 /* Check city validation */
 function validateCity(id, type) {
     $(id).next().remove(".error");
-    let flag = false; 
+    let flag = false;
     if (checkEmpty(id, type)) {
         ($(id).val().length > 32 || !isNaN($(id).val())) ?
             ($(id).css("border", "2px  solid maroon").after("<span class='error'>**" + type + " " + "should be a valid name"), flag = false)
-            : ($(id).after("").css("border", "2px  solid green"), flag = true);;
+            : ($(id).after("").css("border", "2px  solid green"), flag = true);
 
     } return flag;
 }
@@ -59,7 +76,7 @@ function validateState(id, type) {
 }
 /* Check postal validation */
 function validatePostal(id, type) {
-    
+
     $(id).next().remove(".error");
     let flag = false;
     if (checkEmpty(id, type)) {
@@ -89,8 +106,8 @@ function validateEmail(id, type) {
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/; //email validation
         regexValue = regex.test($(id).val());
 
-        (!regexValue ) ?($(id).css("border", "2px  solid maroon")
-        .after("<span class='error'>**" + type + " " + "must be valid formate"), flag = false)
+        (!regexValue) ? ($(id).css("border", "2px  solid maroon")
+            .after("<span class='error'>**" + type + " " + "must be valid formate"), flag = false)
             : ($(id).after("").css("border", "2px  solid green"), flag = true);
     } return flag;
 }
@@ -100,13 +117,12 @@ function validation() {
     if (validatePhone("#phone", "Phone") & validateCity("#city", "city")
         & validateName('#fname', 'First name') & validateName('#lname', 'Last name')
         & validateName('#address1', 'Address') & validatePostal('#postal', 'Postal') & validateDob('#dob', 'D.O.B') &
-        validateEmail('#email', 'Email') & validateState('#state', 'State')) 
-    {
+        validateEmail('#email', 'Email') & validateState('#state', 'State')) {
         // if all function values true than form submit
         alert('Form submit succesfully');
         return true;
 
-    }  else
+    } else
         alert('Please fill all required field');
-        return false;
+    return false;
 }
