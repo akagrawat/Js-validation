@@ -126,3 +126,4 @@ function validation() {
         alert('Please fill all required field');
     return false;
 }
+

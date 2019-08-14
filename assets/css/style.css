@@ -103,6 +103,14 @@ input[type="date"] {
     margin-bottom: 7px;
  
 }
+.errors{
+  color: #a94442;
+  font-size: 14px;
+  display: block;
+  padding: 4px;
+  
+
+}
 
 select{
   padding: 7px;
